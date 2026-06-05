@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Leaflet overrides */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-icon-hospital,
+.custom-icon-centro,
+.custom-icon-puesto,
+.custom-icon-cpoblado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
