@@ -208,7 +208,7 @@ function ResultsPanel({
   onToggle: (k: LayerType) => void;
 }) {
   return (
-    <>
+    <>      
       {/* Header */}
       <div className="mx-4 mt-4 mb-3">
         <div className="flex items-start justify-between gap-2 mb-2">
@@ -277,7 +277,7 @@ export function Sidebar({
           <div className="px-4 pt-5 pb-3 border-b border-gray-200 bg-white">
             <div className="flex items-center gap-2 mb-0.5">
               <Map size={17} className="text-blue-600 shrink-0" />
-              <h1 className="text-base font-bold text-gray-900">GeoSalud Tacna</h1>
+              <h1 className="text-lg font-bold text-gray-900">GeoSalud Tacna</h1>
             </div>
             <p className="text-xs text-gray-400 leading-tight">
               Exploración de proximidad a servicios de salud

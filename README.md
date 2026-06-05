@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# GeoSalud Tacna
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Prototipo de visor geoespacial web para la **GEOTÓN Perú 2026**. Permite explorar la proximidad a establecimientos de salud dentro del departamento de Tacna a partir de cualquier punto seleccionado en el mapa.
 
-Currently, two official plugins are available:
+> *¿Qué establecimientos de salud tengo más cerca de esta ubicación?*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Análisis de proximidad** — Al hacer clic sobre el mapa, se identifican los establecimientos más cercanos por tipo, se resaltan sobre el mapa, se dibujan líneas de distancia y el panel lateral muestra la lista ordenada por proximidad.
 
-## Expanding the ESLint configuration
+**Restricción geográfica** — Si el punto seleccionado está fuera del departamento de Tacna, no se ejecuta ningún cálculo y se muestra un aviso al usuario.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Control de capas** — Hospitales, Centros de Salud, Puestos de Salud y Centros Poblados pueden activarse y desactivarse de forma independiente.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Limpiar selección** — Elimina el marcador, las líneas y los resultados, volviendo al estado inicial.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Datos
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Fuente: **GEO IDEP** — [https://www.geoidep.gob.pe/](https://www.geoidep.gob.pe/)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Los datasets nacionales (Shapefile) fueron filtrados al departamento de Tacna y convertidos a GeoJSON.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Archivo | Registros |
+|---|---|
+| `hospitales_tacna.geojson` | 4 |
+| `centros_salud_tacna.geojson` | 50 |
+| `puestos_salud_tacna.geojson` | 68 |
+| `cpoblado_tacna.geojson` | 102 |
+
+---
+
+## Tecnologías
+
+React 19 · TypeScript · Vite · Leaflet / React Leaflet · Tailwind CSS v4
+
+---
+
+## Instalación
+
+```bash
+npm install
+npm run dev      # desarrollo → http://localhost:5173
+npm run build    # producción → dist/
 ```
